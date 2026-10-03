@@ -32,7 +32,7 @@
 
 	number = str(number)
 	if number.starts-with(regex("[-−]")) { // ascii - or MINUS SIGN U+2212
-		number=number.trim(number.first())
+		number=number.trim(number.first(), at: start)
 		minus()
 	}
 
@@ -40,6 +40,7 @@
 		space()
 		let group-start = true
 		for bit in number {
+			// Very inelegant but it what what i could think of.
 			if not bit.contains(regex("[01]")) { group-start = true }
 			if group-start {
 				group-start = false
